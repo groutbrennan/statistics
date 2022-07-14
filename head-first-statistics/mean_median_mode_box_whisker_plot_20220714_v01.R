@@ -5,8 +5,8 @@ mean(x, trim=0, na.rm=FALSE, ...)
 
 x <- c(12,7,3,4.2,18,2,54,-21,8,-5)
 
-result.mean <- mean(x, trim=0.3)
-print(result.mean)
+mean_result <- result.mean <- mean(x, trim=0.3)
+print(mean_result)
 
 ## Median
 median(x, na.rm = FALSE)
@@ -26,6 +26,12 @@ v <- c(2,1,2,3,1,2,3,4,1,5,5,3,2,3)
 
 result <- getmode(v)
 print(result)
+
+## Variance function.
+xvar <- c(1,2,9)
+var(xvar)
+## Standard Deviation function.
+sd(xvar)
 
 ## Calculate Quartile
 test = c(3,3,6,7,7,10,10,10,11,13,30)
