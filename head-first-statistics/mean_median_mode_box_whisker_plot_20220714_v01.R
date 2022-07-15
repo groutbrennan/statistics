@@ -33,6 +33,27 @@ var(xvar)
 ## Standard Deviation function.
 sd(xvar)
 
+## Find the variance and standard deviation of the following vectors.
+seven <- c(1,2,3,4,5,6,7)
+var(seven)
+sd(seven)
+
+six <- c(1,2,3,4,5,6)
+var(six)
+sd(six)
+
+playerone <- c(7,9,9,10,10,10,10,11,11,13)
+var(playerone)
+sd(playerone)
+
+playertwo <- c(7,8,9,9,10,10,11,11,12,13)
+var(playertwo)
+sd(playertwo)
+
+playerthree <- c(3,3,6,7,7,10,10,10,11,13,30)
+var(playerthree)
+sd(playerthree)
+
 ## Calculate Quartile
 test = c(3,3,6,7,7,10,10,10,11,13,30)
 
