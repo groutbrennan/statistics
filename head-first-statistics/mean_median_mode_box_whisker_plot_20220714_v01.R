@@ -42,17 +42,24 @@ six <- c(1,2,3,4,5,6)
 var(six)
 sd(six)
 
+## Standard score function using x, mean, standard deviation calculations.
+standard_score <- function(i, x) {
+  m <- result.mean <- mean(i, trim=0.3)
+  sd <- sd(i)
+  x_mean_diff <- x-m
+  score <- x_mean_diff/sd
+  print(score)
+}
+
+## Find standard scores for the following basketball players.
 playerone <- c(7,9,9,10,10,10,10,11,11,13)
-var(playerone)
-sd(playerone)
+standard_score(playerone, 12)
 
 playertwo <- c(7,8,9,9,10,10,11,11,12,13)
-var(playertwo)
-sd(playertwo)
+standard_score(playertwo, 15)
 
 playerthree <- c(3,3,6,7,7,10,10,10,11,13,30)
-var(playerthree)
-sd(playerthree)
+standard_score(playerthree, 10)
 
 ## Calculate Quartile
 test = c(3,3,6,7,7,10,10,10,11,13,30)
