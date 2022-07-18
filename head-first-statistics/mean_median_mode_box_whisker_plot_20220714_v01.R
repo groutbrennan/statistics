@@ -2,16 +2,13 @@ library(ggplot2)
 
 ## Mean
 mean(x, trim=0, na.rm=FALSE, ...)
-
 x <- c(12,7,3,4.2,18,2,54,-21,8,-5)
-
 mean_result <- result.mean <- mean(x, trim=0.3)
 print(mean_result)
 
 ## Median
 median(x, na.rm = FALSE)
 xm <- c(1,2,3,4,5,6,7,8)
-
 median.result <- median(xm)
 print(median.result)
 
@@ -23,13 +20,34 @@ getmode <- function(v) {
 }
 
 v <- c(2,1,2,3,1,2,3,4,1,5,5,3,2,3)
-
 result <- getmode(v)
 print(result)
+
+## Range
+upper_bound - lower_bound
+
+## Interquartile Range
+upper_quartile - lower_quartile
+
+## Variance
+var()
+
+## Standard deviation
+sd()
+
+## Standard score function using x, mean, standard deviation calculations.
+standard_score <- function(i, x) {
+  m <- result.mean <- mean(i, trim=0.3)
+  sd <- sd(i)
+  x_mean_diff <- x-m
+  score <- x_mean_diff/sd
+  print(score)
+}
 
 ## Variance function.
 xvar <- c(1,2,9)
 var(xvar)
+
 ## Standard Deviation function.
 sd(xvar)
 
@@ -41,15 +59,6 @@ sd(seven)
 six <- c(1,2,3,4,5,6)
 var(six)
 sd(six)
-
-## Standard score function using x, mean, standard deviation calculations.
-standard_score <- function(i, x) {
-  m <- result.mean <- mean(i, trim=0.3)
-  sd <- sd(i)
-  x_mean_diff <- x-m
-  score <- x_mean_diff/sd
-  print(score)
-}
 
 ## Find standard scores for the following basketball players.
 playerone <- c(7,9,9,10,10,10,10,11,11,13)
@@ -81,17 +90,10 @@ as.integer(ceiling(upper_quartile))
 percentile <- 10 * length(test)/100
 as.integer(ceiling(percentile))
 
-
 ## Find the median quickly using the summary function.
 summary(test)
 
-## Create a data frame from the test vector.
-test_df <- data.frame(test)
-head(test_df)
-
-## Create a box and whisker plot to visualize the upper bound, lower bound, upper quartile, lower quartile, interquartile range, median.
-ggplot(data = test_df, aes(x=test)) +
-  geom_boxplot()
+##################### Visualization: box and whisker plot ##############################
 
 ## Player 1 and player 2 basketball scores as vectors.
 score <- c(0,8,9,9,10,10,10,11,11,12,8,10,10,10,10,10,10,10,10,12)
