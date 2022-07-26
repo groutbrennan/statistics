@@ -41,7 +41,9 @@ weekday_y <- c(0.2, 0.5, 0.2, 0.1)
 weekend_x <- c(15, 20, 25, 30)
 weekend_y <- c(0.15, 0.6, 0.2, 0.05)
 
+## How much would 25 people expect to spend on the weekday.
 print(25 * expectation(weekday_x, weekday_y)) ## 400
+## How much would 20 people expect to spend on the weekend.
 print(20 * expectation(weekend_x, weekend_y)) ## 415
 ## Expect 20 people who will eat on the weekend will pay more than 25 people who eat on the weekday.
 
