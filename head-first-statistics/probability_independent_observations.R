@@ -28,6 +28,9 @@ standard_deviation <- function(x) {
 }
 standard_deviation(variance(x,y))
 
+######################################################
+############ Question 1 ##############################
+######################################################
 ## Restaurant offers two menus, one for the weekdays and the other for the weekends.
 ## Each menu offers four set prices, and the probability distributions for the amount someone pays is:
 ## Weekday menu:
@@ -42,6 +45,9 @@ print(25 * expectation(weekday_x, weekday_y)) ## 400
 print(20 * expectation(weekend_x, weekend_y)) ## 415
 ## Expect 20 people who will eat on the weekend will pay more than 25 people who eat on the weekday.
 
+##################################################################
+###################### Question 2 ################################
+##################################################################
 ## Find how much Sam tends to spend at each restaurant.
 restaurant_a_x <- c(20, 30, 40, 45)
 restaurant_a_y <- c(0.3, 0.4, 0.2, 0.1)
