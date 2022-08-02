@@ -7,7 +7,7 @@ spread <- function(r1, r2, bet, odds) {
   print(sum(x * round(probability, digits = 3)))
 }
 
-## Factorial takes all of the numbers from n down to 1.
+## Factorial takes all of the numbers from n down to 1 called arrangements.
 ## Factorial of 3 = 3*2*1 = 6.
 spread(factorial(3), 1, 500, factorial(3)+1)
 ## Expect to win $168.
