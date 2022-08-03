@@ -41,3 +41,13 @@ ssn_p <- function(x, y, z) {
 ssn_p(3, 2, 4)
 ## 0.003472222
 
+## Finding the probability if the arrangements are in a circle.
+## Fix the position of one number (n-1)! then calculate the number of ways for the rest of the numbers.
+circle_arrangement_p <- function (x) {
+  fix_n <- x - 1
+  n <- factorial(fix_n)
+  p <- 1 / n
+  print(p)
+}
+
+circle_arrangement_p(10)
