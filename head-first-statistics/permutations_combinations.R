@@ -4,7 +4,8 @@
 spread <- function(n, bet, odds) {
   x <- c((bet-(bet*2)), (bet*odds))
   probability <- c((n-1)/n, (1/n))
-  print(sum(x * round(probability, digits = 3)))
+  winnings <- sum(x * round(probability, digits = 3))
+  print(winnings)
 }
 
 ## Factorial takes all of the numbers from n down to 1 called arrangements.
