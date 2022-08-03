@@ -51,3 +51,63 @@ circle_arrangement_p <- function (x) {
 }
 
 circle_arrangement_p(10)
+
+## Arranging by type.
+## So if there are 3 horses and 3 zebras in a race.
+## Calculate how many different orderings there are of horses and zebras.
+type_arrangement <- function(n, x) {
+  p <- factorial(n) / prod(factorial(x))
+  print(p)
+}
+
+horse_zebra <- c(3, 3)
+type_arrangement(6, horse_zebra)
+## 20 possible ways of winning.
+## 1/20 chance of winning.
+
+## A race between 3 horses, 2 zebras, 5 camels.
+## How many ways are there of finishing the race if we're just interested in species of animal in each position?
+horse_zebra_camel <- c(3, 2, 5)
+
+type_arrangement(10, horse_zebra_camel)
+## 2520 possible ways of winning.
+
+## What the probability that all 5 camels finish the race consecutively if each animal has an equal chance of winning?
+## Find the number of ways in which the 5 camels can finish the race together.
+## To do this, we class the 5 camels as one single object (1).
+horse_zebra_camelWins <- c(3,2,1)
+type_arrangement(6, horse_zebra_camelWins)
+## 60 possible ways a camel can win.
+
+## Find the probability of all camels finishing together. 
+## Divide 60 possible ways the camel can win over the amount of possible ways the horse_zebra_camel can win: 2520.
+camel_p <- type_arrangement(6, horse_zebra_camelWins)
+horse_zebra_camel_p <- type_arrangement(10, horse_zebra_camel)
+camels_finishing_together_p <- camel_p / horse_zebra_camel_p
+camels_finishing_together_p
+## 0.02380952 probability of all camels finishing together.
+
+#################################################################
+################### Permutations ################################
+#################################################################
+
+## nPr = n!/(n-r)
+permutation <- function(n, r) {
+  n_r_diff <- n - r
+  p <- factorial(n) / factorial(n_r_diff)
+  print(p)
+}
+permutation(20, 3)
+
+## Combination is the number of permutations divided by r (the number of positions we want to fill).
+combinations <- function(p, r) {
+  a <- p / factorial(r)
+  print(a)
+}
+
+## Find the combinations of the top 3 horses winning out of 20 horses.
+p_20 <- permutation(20, 3)
+combinations(p_20, 3)
+## 1140
+## There are 6,480 permutations for filling the first three places in the race.
+## If you aren't concerned about the order, there are 1,140 combinations.
