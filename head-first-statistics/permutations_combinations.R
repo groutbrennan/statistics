@@ -1,17 +1,15 @@
 ## Spread function calculates the spread given the possibilities, bet, and odds. 
 ## If there are 6 different ways to win, then the spread is ratio is 7:1.
 ## The bet is $500.
-spread <- function(r1, r2, bet, odds) {
+spread <- function(n, bet, odds) {
   x <- c((bet-(bet*2)), (bet*odds))
-  probability <- c((r1-1)/r1, (r2/r1))
-  print(probability)
+  probability <- c((n-1)/n, (1/n))
   print(sum(x * round(probability, digits = 3)))
 }
 
 ## Factorial takes all of the numbers from n down to 1 called arrangements.
 ## Factorial of 3 = 3*2*1 = 6.
-spread(factorial(3), 1, 500, factorial(3)+1)
-spread(factorial(7), 1, 500, factorial(7)+1)
+spread(factorial(3), 500, factorial(3)+1)
 ## Expect to win $168.
 
 ## Paula has just been reminded that the first three numbers in some arrangement of the numbers: 1,2,3.
