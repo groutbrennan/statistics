@@ -116,8 +116,8 @@ permutation(20, 3)
 
 combinations <- function(n, r) {
   n_r_diff <- n - r
-  fac_nr_diff <- factorial(r) * factorial(n_r_diff)
-  c <- factorial(n) / fac_nr_diff
+  fac_r_nr_diff <- factorial(r) * factorial(n_r_diff)
+  c <- factorial(n) / fac_r_nr_diff
   print(c)
 }
 ## Find the combinations of the top 3 horses winning out of 20 horses.
@@ -125,3 +125,55 @@ combinations(20, 3)
 ## 1140
 ## There are 6,840 permutations for filling the first three places in the race.
 ## If you aren't concerned about the order, there are 1,140 combinations.
+
+## There are 12 basketball players in the roster, and 5 are allowed on the court at any one time.
+## How many different arrangements are there for choosing who's on the court at the same time?
+all_players <- combinations(12, 5)
+
+#################################################################
+################### Question 1 ################################
+#################################################################
+
+## The coach classes 3 of the players as expert shooters.
+## What's the probability that all 3 of these players will be on the court at the same time, if they're chosen at random?
+## If the three expert shooters are on the court at the same time, this means that there are 2 more places left for the other players.
+## We need to find the number of combinations of filling these 2 places from the remaining 9 players.
+all_but_three_players <- combinations(9, 2)
+
+## Probability of all 3 shooters being on the court at the same time.
+three_top_shooters_p <- all_but_three_players / all_players
+three_top_shooters_p
+## 0.04545 = 1/22
+
+#################################################################
+################### Question 2 ################################
+#################################################################
+
+## A poker hand consists of 5 cards and there are 52 cards in a pack.
+## How many different arrangements are there?
+poker_hand <- combinations(52, 5)
+## 2598960
+
+## Royal Flush.
+royal_flush <- function() {
+  print(4 / poker_hand)
+}
+royal_flush()
+## 0.0000015 = 1/649,740
+
+## Four of a Kind.
+four_of_kind <- function() {
+  denominations <- 13 * 48
+  print(denominations / poker_hand)
+}
+four_of_kind()
+## 0.000240096
+
+## Flush
+flush <- function() {
+  d <- combinations(13, 8)
+  card_suit <- d * 4
+  print(card_suit / poker_hand)
+}
+flush()
+## 0.001980792
