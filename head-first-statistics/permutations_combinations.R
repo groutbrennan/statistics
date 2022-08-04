@@ -91,23 +91,37 @@ camels_finishing_together_p
 ################### Permutations ################################
 #################################################################
 
+## Permutation: is the number of ways in which you can choose objects from a pool, and hwere the order in which you choose them counts.
+## It's a lot more specific than a combination as you want to count the number of ways in which you fill each position.
+## Permutation: Order Matters.
 ## nPr = n!/(n-r)
+
 permutation <- function(n, r) {
   n_r_diff <- n - r
   p <- factorial(n) / factorial(n_r_diff)
   print(p)
 }
 permutation(20, 3)
+## 6,840 permutations for filling the first three places in the race.
 
-## Combination is the number of permutations divided by r (the number of positions we want to fill).
-combinations <- function(p, r) {
-  a <- p / factorial(r)
-  print(a)
+#################################################################
+################### Combinations ################################
+#################################################################
+
+## Combination: is the number of ways in which you can choose objects from a pool, without caring about the exact order in which you choose them.
+## It's a lot more general than a permutation as you don't need to know how each position has been filled.
+## It's enough to know which objects have been chosen.
+## Combination: Order Doesn't Matter.
+## nCr = n! / r!(n-r)
+
+combinations <- function(n, r) {
+  n_r_diff <- n - r
+  fac_nr_diff <- factorial(r) * factorial(n_r_diff)
+  c <- factorial(n) / fac_nr_diff
+  print(c)
 }
-
 ## Find the combinations of the top 3 horses winning out of 20 horses.
-p_20 <- permutation(20, 3)
-combinations(p_20, 3)
+combinations(20, 3)
 ## 1140
-## There are 6,480 permutations for filling the first three places in the race.
+## There are 6,840 permutations for filling the first three places in the race.
 ## If you aren't concerned about the order, there are 1,140 combinations.
