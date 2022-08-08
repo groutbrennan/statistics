@@ -121,3 +121,15 @@ variance_number_of_attempts <- function(q,p) {
 }
 variance_number_of_attempts(0.6, 0.4)
 ## 3.75
+
+########################## Binomial Distribution #####################
+## P(X = r) = nCr * p^r * q^n-r
+binomial_distribution <- function(n, r, p, q) {
+  c <- factorial(n) / factorial(n-r)
+  pwr <- n-r
+  p_q <- p^r * q^pwr
+  bd <- c * p_q
+  print(bd)
+}
+binomial_distribution(3,1, 0.25, 0.75)
+## 0.422
