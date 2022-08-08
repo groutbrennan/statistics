@@ -50,7 +50,7 @@ ggplot(data = gd_pattern, aes(x=less_equal_x, y=equal_x)) +
   geom_line() +
   geom_point()
 
-##################### Epectation Variance ###################################
+##################### Expectation Variance ###################################
 ## Find an expression for the variance of the geometric distribution.
 x_ten_col <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 p_equal_x <- c(0.2, 0.16, 0.128, 0.1024, 0.08192, 0.065536, 0.0524288, 0.04194304, 0.033554432, 0.0268435456)
@@ -66,9 +66,58 @@ e_v_df <- data.frame(expectation_variance(p_equal_x, x_ten_col))
 head(e_v_df)
 
 ## Rename the first column then find the running sum using cumsum calculation.
-e_v_df %>% 
+e_rt <- e_v_df %>% 
   rename(variance_expectation = expectation_variance.p_equal_x..x_ten_col.) %>% 
   mutate(running_sum_total = cumsum(variance_expectation))
 
+head(e_rt)
 
+ggplot(data = e_rt, aes(x=running_sum_total, y=variance_expectation)) +
+  geom_line()
 
+############################ Geometric Distribution Calculations ##################
+## Question 1
+## The probability that another snowboarder will make it down the slope without falling over is 0.4.
+## Your job is to play like you're the snowboarder and work out the following probabilities for your slope success.
+
+## Probability that you will be successful on your second attempt while failing on your first.
+## P(X = 2) = p * q
+successful_second_attempt <- function(p, q) {
+  probability <- p * q
+  print(probability)
+}
+successful_second_attempt(0.4, 0.6)
+## 0.24
+
+## The probability that you will be successful in 4 attempts or fewer.
+## P(X <= 4) = 1 - q^4
+p_successful_four_or_fewer <- function(q) {
+  probability <- 1 - q^4
+  print(probability)
+}
+p_successful_four_or_fewer(0.6)
+## 0.8704
+
+## The probability that you will need more than 4 attempts to be successful.
+## P(X > 4) = q^4
+p_successful_more_than_4_attemtps <- function(q) {
+  print(q^4)
+}
+p_successful_more_than_4_attemtps(0.6)
+## 0.1296
+
+## The number of attempts you expect you'll need to make before being successful.
+## E(X) = 1/p
+number_of_attempts_to_be_successful <- function(p) {
+  print(1 / p)
+}
+number_of_attempts_to_be_successful(0.4)
+## 2.5
+
+## The variance of the number of attempts.
+## Var(X) = q/p^2
+variance_number_of_attempts <- function(q,p) {
+  print(q/p^2)
+}
+variance_number_of_attempts(0.6, 0.4)
+## 3.75
