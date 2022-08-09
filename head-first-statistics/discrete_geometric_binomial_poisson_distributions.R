@@ -76,8 +76,7 @@ ggplot(data = e_rt, aes(x=running_sum_total, y=variance_expectation)) +
   geom_line()
 
 ############################ Geometric Distribution Calculations ##################
-## Definition: Use Geometric Distribution if you're interested in how many trial you'll need  -
-## before you have your first success.
+## Definition: Use Geometric Distribution if you're interested in how many trials you'll need before you have your first success.
 
 ## Question 1
 ## The probability that another snowboarder will make it down the slope without falling over is 0.4.
@@ -126,16 +125,95 @@ variance_number_of_attempts(0.6, 0.4)
 ## 3.75
 
 ########################## Binomial Distribution #####################
-## Definition: Use Binomial Distribution if you have a fixed number of trials - 
-## and you want to know the probability of getting a certain number of successes.
+## Definition: Use Binomial Distribution if you have a fixed number of trials and you want to know the probability of getting a certain number of successes.
 ## P(X = r) = nCr * p^r * q^n-r
 binomial_distribution <- function(n, r, p, q) {
-  c <- factorial(n) / factorial(n-r)
+  c <- factorial(n) / (factorial(r) * factorial(n-r))
   pwr <- n-r
   p_q <- p^r * q^pwr
   bd <- c * p_q
   print(bd)
 }
-binomial_distribution(3,1, 0.25, 0.75)
+binomial_distribution(3, 1, 0.25, 0.75)
 ## 0.422
 ## 42% chance I get one question correct out of 3 questions.
+
+## Binomial expectation.
+## E(X) = np
+binomial_expectation <- function(n,p) {
+  print(n * p)
+}
+binomial_expectation(3, 0.25)
+## 0.75
+
+## Binomial Variance.
+## Var(X) = npq
+binomial_variance <- function(n,p,q) {
+  print(n * p * q)
+}
+binomial_variance(3,0.25, 0.75)
+## 0.5625
+
+##################### Scenario Exercise for Binomial Distribution ###############################
+## In the latest round of a game, there are 5 questions.
+## The probability of getting a successful outcome in a single trial is 0.25.
+
+## Question 1: What's the probability of getting exactly 2 questions right?
+binomial_distribution(5, 2, 0.25, 0.75)
+## 0.264
+
+## Question 2: What's the probability of getting exactly 3 questions right?
+binomial_distribution(5, 3, 0.25, 0.75)
+## 0.0879
+
+## Question 3: What's the probability of getting two or three questions right?
+question_3 <- binomial_distribution(5, 2, 0.25, 0.75) + binomial_distribution(5, 3, 0.25, 0.75)
+print(question_3)
+## 0.3516
+
+## Question 4: What's the probability of getting no questions right?
+binomial_distribution(5, 0, 0.25, 0.75)
+## 0.2373
+
+## Question 5: What are the expectation and variance?
+binomial_expectation(5, 0.25)
+## 1.25
+
+binomial_variance(5, 0.25, 0.75)
+## 0.9375
+
+############################ Poisson Distribution #######################
+## Definition: Individual events occur at random and independently in a given interval.
+## You know the mean number of occurrences in the interval or the rate of occurrences, and it's finite.
+## The mean number of occurrences is represented by the Greek letter Lambda.
+
+## P(X = r) = e-lambda lambda * r/r!
+## NOTE: exp() is the built in exponential value for e in the following equation.
+poisson_dsitribution <- function(lambda, r) {
+  numerator <- exp(-lambda) * lambda^r
+  pd <- numerator / factorial(r)
+  print(pd)
+}
+poisson_dsitribution(2, 3)
+## 0.180
+
+## Scenario: The mean number of times the popcorn machine breaks down per week is 3.4.
+## Question 1: Whats the probability of the popcorn machine not malfunctioning next week?
+poisson_dsitribution(3.4, 0)
+## 0.033
+
+## Question 2: What's the probability of the popcorn machine malfunctioning three times next week?
+poisson_dsitribution(3.4, 3)
+## 0.218
+
+## Question 3: What's the expectation and variance of the popcorn machine malfunctioning?
+## 3.4 - For Poisson Distribution the expectation and variance are equal to Lambda.
+
+## What is the probability distribution of the popcorn machine and the drink machine not breaking down?
+## Popcorn machine: lambda = 3.4
+## Drink machine: lambda = 2.3
+popcorn_machine <- 3.4
+drink_machine <- 2.3
+p_d_lambda <-popcorn_machine + drink_machine
+poisson_dsitribution(p_d_lambda, 0)
+## 0.0033
