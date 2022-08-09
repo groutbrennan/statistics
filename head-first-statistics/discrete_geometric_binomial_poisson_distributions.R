@@ -76,6 +76,9 @@ ggplot(data = e_rt, aes(x=running_sum_total, y=variance_expectation)) +
   geom_line()
 
 ############################ Geometric Distribution Calculations ##################
+## Definition: Use Geometric Distribution if you're interested in how many trial you'll need  -
+## before you have your first success.
+
 ## Question 1
 ## The probability that another snowboarder will make it down the slope without falling over is 0.4.
 ## Your job is to play like you're the snowboarder and work out the following probabilities for your slope success.
@@ -123,6 +126,8 @@ variance_number_of_attempts(0.6, 0.4)
 ## 3.75
 
 ########################## Binomial Distribution #####################
+## Definition: Use Binomial Distribution if you have a fixed number of trials - 
+## and you want to know the probability of getting a certain number of successes.
 ## P(X = r) = nCr * p^r * q^n-r
 binomial_distribution <- function(n, r, p, q) {
   c <- factorial(n) / factorial(n-r)
@@ -133,3 +138,4 @@ binomial_distribution <- function(n, r, p, q) {
 }
 binomial_distribution(3,1, 0.25, 0.75)
 ## 0.422
+## 42% chance I get one question correct out of 3 questions.
